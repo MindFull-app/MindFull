@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './client/App.js',
+  entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
@@ -13,7 +13,7 @@ module.exports = {
     port: 8080,
     publicPath: '/build/',
     proxy: {
-      '/api/leaders': {
+      '/api': {
         target: 'http://localhost:3000/',
         secure: false,
       }
@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /scss$/,
         exclude: /node_modules/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
