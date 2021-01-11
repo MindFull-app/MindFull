@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development nodemon server/server.js & webpack-dev-server --open"
+    "dev": "concurrently \"NODE_ENV=development webpack-dev-server --open --hot\" \"nodemon server/server.js\""
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/janemkim/MindFull#readme",
   "dependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "concurrently": "^5.3.0",
     "css-loader": "^5.0.1",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
@@ -33,9 +34,9 @@
     "react-dom": "^17.0.1",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.12.3",
-    "webpack-cli": "^4.3.1",
-    "webpack-dev-server": "^3.11.1"
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "eslint": "^7.17.0",
