@@ -1,20 +1,22 @@
-const {models} = require('../../db/db');
+const { User } = require('../models/UserModels');
 
-userController = {};
+const userController = {};
 
 userController.createUser = async (req, res, next) => {
   try {
-    let {first_name, last_name, email, address, zip} = req.body
-    await models.User.create({
-      first_name, last_name, email, address, zip
-    })
+    const {
+      first_name, last_name, email, password, patient, therapist,
+    } = req.body;
+    await User.create({
+      first_name, last_name, email, password, patient, therapist,
+    });
     return next();
   } catch (error) {
     return next({
       log: `userController.createUser: ERROR: ${error}`,
-      message: 'Error creating new user'
-    })
+      message: 'Error creating new user',
+    });
   }
-}
+};
 
 module.exports = userController;
