@@ -1,9 +1,8 @@
+/* eslint-disable no-console */
 const express = require('express');
 require('dotenv').config();
 
-const userRouter = require('./routes/user')
-
-const { instance } = require('../db/db');
+const userRouter = require('./routes/user');
 
 const app = express();
 const PORT = 3000;
@@ -12,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // user router
-app.use('/user', userRouter)
+app.use('/user', userRouter);
 
 // add 404 status code in case url cannot be found at server
 app.use('*', (req, res) => res.sendStatus(404));
@@ -31,8 +30,7 @@ app.use((err, req, res, next) => {
 
 // add {force: true} in the argument for instance.sync
 // to drop tables and create new ones at server initiation
-instance.sync({force: true}).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Listening to port ${PORT}`);
-  });
+
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
 });
