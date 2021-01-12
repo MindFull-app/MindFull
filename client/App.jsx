@@ -12,10 +12,15 @@ function App() {
         Log in
       </Button>
       <br/>
+      <br/>
       <form className="class" noValidate autoComplete="off">
-        <TextField id="standard-basic" label="Standard" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <TextField required id="signup_username" label="Email" />
+        <br/>
+        <TextField required id="signup_password" label="Password" />
+        <br/>
+        <TextField required id="first_name" label="First Name" />
+        <br/>
+        <TextField required id="last_name" label="Last Name" />
       </form>
       <br/>
       <Button variant="contained" color="primary">
