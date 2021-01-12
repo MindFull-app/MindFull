@@ -2,15 +2,17 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 
-function App() {
+import Header from './components/Header.jsx';
+
+function SignUp() {
   return (
     <div>
-      <h1>MindFull</h1>
+      <Header />
       <Button variant="contained" color="primary">
-        Hello World
+        Enter
       </Button>
     </div>
   );
 }
 
-export default App;
+export default SignUp;
