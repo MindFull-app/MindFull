@@ -61,7 +61,7 @@ function UserInformation() {
           <MenuItem>Other</MenuItem>
         </TextField>
         <br/>
-        <TextField required id="gender_identity" label="Therapist Gender Preference">
+        <TextField required id="therapist_preference" label="Therapist Gender Preference">
           <MenuItem>Male</MenuItem>
           <MenuItem>Female</MenuItem>
           <MenuItem>Does not matter</MenuItem>
