@@ -10,8 +10,8 @@ router.post('/signup', userController.createUser, (req, res) => {
   return res.status(200).json(res.locals.user);
 });
 
-router.put('/form', userController.userInfo, (req, res) => {
-  return res.sendStatus(200);
+router.put('/form', userController.userInfo, userController.matchTherapist, (req, res) => {
+  return res.status(200).json(res.locals.matchTherapist);
 });
 
 module.exports = router;

@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable quote-props */
 /* eslint-disable camelcase */
 const { User } = require('../models/UserModels');
 
@@ -22,7 +24,6 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.userInfo = async (req, res, next) => {
-  console.log(req.body);
   try {
     const {
       _id,
@@ -62,8 +63,7 @@ userController.userInfo = async (req, res, next) => {
         mental_health,
       },
     },
-    { upsert: true });
-    console.log(updateUser);
+    { returnOriginal: false });
     return next();
   } catch (error) {
     return next({
@@ -73,15 +73,37 @@ userController.userInfo = async (req, res, next) => {
   }
 };
 
-module.exports = userController;
+userController.matchTherapist = async (req, res, next) => {
+  try {
+    const {
+      gender_preference,
+      imposter_syndrome,
+      lgbtqia_issues,
+      marriage_counseling,
+      childhood_trauma,
+      substance_abuse,
+      mental_health,
+    } = req.body;
+    const filtered = Object.keys(req.body).filter((key) => req.body[key] === true);
+    const obj = {
+      "therapist": true,
+      "gender": gender_preference,
+    };
+    filtered.forEach((e) => { obj[e] = true; });
+    const matchTherapist = User.aggregate([
+      {
+        $match: obj,
+      },
+    ]);
+    const matchResult = await matchTherapist.exec();
+    res.locals.matchTherapist = matchResult;
+    return next();
+  } catch (error) {
+    return next({
+      log: `userController.matchTherapist: ERROR: ${error}`,
+      message: 'Error with match aggregation in userController.matchTherapist',
+    });
+  }
+};
 
-// User.aggregate([
-//   {
-//     $match: {
-//       therapist: true,
-//       gender: 'female',
-//       mental_health: true,
-//       lgbtqia_issues: true,
-//     },
-//   }, {},
-// ]);
+module.exports = userController;

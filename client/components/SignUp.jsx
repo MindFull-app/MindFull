@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {Button, TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   }
 });
 
-function SignUp({setUser}) {
+function SignUp({user, setUser}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -71,9 +71,9 @@ function SignUp({setUser}) {
   return (
     <SimpleCard >
       <SimpleForm btn='SignUp' onFormSubmit={onFormSubmit}>
-
+        {user ? <Redirect to="/form" /> : ''}
         <TextField onChange={(e) => handleInputChange(e)} value={email} required id="signup_username" name="email" label="Email" />
-        <TextField onChange={(e) => handleInputChange(e)} value={password} required id="signup_password" name="password" label="Password" />
+        <TextField onChange={(e) => handleInputChange(e)} value={password} required id="signup_password" name="password" label="Password" type="password"/>
         <TextField onChange={(e) => handleInputChange(e)} value={firstName} required id="first_name" name="firstName" label="First Name" />
         <TextField onChange={(e) => handleInputChange(e)} value={lastName} required id="last_name" name="lastName" label="Last Name" />
 
