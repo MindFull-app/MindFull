@@ -14,7 +14,7 @@ module.exports = {
     port: 8080,
     publicPath: '/build/',
     proxy: {
-      '/api': {
+      '/user': {
         target: 'http://localhost:3000/',
         secure: false,
       },
