@@ -1,13 +1,12 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
+import {Button, TextField, MenuItem} from '@material-ui/core';
 
 import Header from './components/Header.jsx';
 
-function SignUp() {
+function App() {
   return (
     <div>
-      <Header />
       <Button variant="contained" color="primary">
         Enter
       </Button>
@@ -15,4 +14,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default App;
