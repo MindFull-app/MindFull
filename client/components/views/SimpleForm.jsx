@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   }
 });
 
-function SimpleForm({children, btn}) {
+function SimpleForm({children, btn, onFormSubmit}) {
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ function SimpleForm({children, btn}) {
       <form className={classes.root} noValidate autoComplete="off">
         {children}
       </form>
-      <Button className={classes.btn} variant="contained" color="primary">
+      <Button onClick={onFormSubmit} className={classes.btn} variant="contained" color="primary">
         {btn}
       </Button>
     </>
