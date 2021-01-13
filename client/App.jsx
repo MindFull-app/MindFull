@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' component={Login} exact />
-        <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} />} />
+        <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} user={user}/>} />
         <Route path='/home' component={Home} />
         <Route path='/form' component={UserInformation} />
       </Switch>

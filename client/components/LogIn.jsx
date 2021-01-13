@@ -10,7 +10,7 @@ function LogIn() {
     <SimpleCard >
       <SimpleForm btn='LogIn'>
         <TextField required id="username" label="Username" />
-        <TextField required id="password" label="Password" />
+        <TextField required id="password" label="Password" type="password"/>
       </SimpleForm>
       <div>
         Not a member?
