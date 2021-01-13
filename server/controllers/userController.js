@@ -24,7 +24,7 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.userInfo = async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const {
       _id,
@@ -65,7 +65,7 @@ userController.userInfo = async (req, res, next) => {
       },
     },
     { upsert: true });
-    console.log(updateUser);
+    // console.log(updateUser);
     return next();
   } catch (error) {
     return next({
@@ -86,17 +86,20 @@ userController.matchTherapist = async (req, res, next) => {
       substance_abuse,
       mental_health,
     } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
+    const filtered = Object.keys(req.body).filter((key) => req.body[key] === true);
+    const obj = {
+      "therapist": true,
+      "gender": gender_preference,
+    };
+    filtered.forEach((e) => { obj[e] = true; });
     const matchTherapist = User.aggregate([
       {
-        $match: {
-          "therapist": true,
-          "gender": gender_preference,
-        },
+        $match: obj,
       },
     ]);
     const matchResult = await matchTherapist.exec();
-    console.log(matchResult);
+    // console.log(matchResult);
     res.locals.matchTherapist = matchResult;
     return next();
   } catch (error) {
