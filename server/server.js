@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const express = require('express');
 require('dotenv').config();
 
@@ -27,9 +26,6 @@ app.use((err, req, res, next) => {
     message: err.message,
   });
 });
-
-// add {force: true} in the argument for instance.sync
-// to drop tables and create new ones at server initiation
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
