@@ -9,6 +9,7 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   devServer: {
+    historyApiFallback: true,
     host: 'localhost',
     port: 8080,
     publicPath: '/build/',
@@ -16,8 +17,8 @@ module.exports = {
       '/api': {
         target: 'http://localhost:3000/',
         secure: false,
-      }
-    }
+      },
+    },
   },
   module: {
     rules: [
