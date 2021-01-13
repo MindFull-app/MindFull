@@ -31,7 +31,9 @@ userController.userInfo = async (req, res, next) => {
       relationship_status,
       years_experience,
       gender,
-      therapist_preference,
+      pronouns,
+      therapy_before,
+      gender_preference,
       imposter_syndrome,
       lgbtqia_issues,
       marriage_counseling,
@@ -49,7 +51,9 @@ userController.userInfo = async (req, res, next) => {
         relationship_status,
         years_experience,
         gender,
-        therapist_preference,
+        pronouns,
+        therapy_before,
+        gender_preference,
         imposter_syndrome,
         lgbtqia_issues,
         marriage_counseling,
@@ -70,3 +74,14 @@ userController.userInfo = async (req, res, next) => {
 };
 
 module.exports = userController;
+
+// User.aggregate([
+//   {
+//     $match: {
+//       therapist: true,
+//       gender: 'female',
+//       mental_health: true,
+//       lgbtqia_issues: true,
+//     },
+//   }, {},
+// ]);
