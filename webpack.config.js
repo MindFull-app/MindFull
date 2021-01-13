@@ -9,6 +9,7 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   devServer: {
+    historyApiFallback: true,
     host: 'localhost',
     port: 8080,
     publicPath: '/build/',

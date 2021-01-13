@@ -1,31 +1,22 @@
 import React from "react"
-import ReactDOM from 'react-dom';
-import {Button, TextField} from '@material-ui/core';
+import { Route, Switch } from 'react-router-dom';
+import {useState} from 'react';
 
 import Header from './components/Header.jsx';
+import Login from './components/Login.jsx';
+import SignUp from './components/SignUp.jsx';
 
 function App() {
+  const [user, setUser] = useState(null);
+  console.log(user);
   return (
-    <div>
+    <main>
       <Header />
-      <Button variant="contained" color="primary">
-        Log in
-      </Button>
-      <br/>
-      <form className="class" noValidate autoComplete="off">
-        <TextField id="standard-basic" label="Standard" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      </form>
-      <br/>
-      <Button variant="contained" color="primary">
-        Sign Up
-      </Button>
-      <br/>
-      <Button variant="contained" color="primary">
-        Sign up as a therapist
-      </Button>
-    </div>
+      <Switch>
+        <Route path='/' component={Login} exact />
+        <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} />} />
+      </Switch>
+    </main>
   );
 }
 
