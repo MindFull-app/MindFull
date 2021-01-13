@@ -1,22 +1,22 @@
 import React from "react"
-import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import {Button, TextField} from '@material-ui/core';
 
-import Header from './Header.jsx';
+import SimpleCard from './views/SimpleCard.jsx';
+import SimpleForm from './views/SimpleForm.jsx';
 
 function LogIn() {
   return (
-    <div>
-      <form className="class" noValidate autoComplete="off">
+    <SimpleCard >
+      <SimpleForm btn='LogIn'>
         <TextField required id="username" label="Username" />
-        <br/>
         <TextField required id="password" label="Password" />
-      </form>
-      <br/>
-      <Button variant="contained" color="primary">
-        Enter
-      </Button>
-    </div>
+      </SimpleForm>
+      <div>
+        Not a member?
+        <Link to='signup'><Button>SignUp</Button></Link>
+      </div>
+    </SimpleCard>
   );
 }
 
