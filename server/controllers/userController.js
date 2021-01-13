@@ -84,12 +84,15 @@ userController.matchTherapist = async (req, res, next) => {
       substance_abuse,
       mental_health,
     } = req.body;
+    const filtered = Object.keys(req.body).filter((key) => req.body[key] === true);
+    const obj = {
+      "therapist": true,
+      "gender": gender_preference,
+    };
+    filtered.forEach((e) => { obj[e] = true; });
     const matchTherapist = User.aggregate([
       {
-        $match: {
-          "therapist": true,
-          "gender": gender_preference,
-        },
+        $match: obj,
       },
     ]);
     const matchResult = await matchTherapist.exec();
