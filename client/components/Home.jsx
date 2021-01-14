@@ -7,6 +7,11 @@ import { Link, Redirect } from 'react-router-dom';
 import SimpleCard from './views/SimpleCard.jsx';
 
 function Home() {
+
+  function clickTherapistMatches () {
+
+  }
+
   return (
     <div>
       <h1>Welcome to MindFull, user_name</h1>
@@ -18,7 +23,7 @@ function Home() {
       <br/>
 
       <h4>View therapist matches</h4>
-      <Button id="therapist_matches" variant="contained" color="primary">
+      <Link to='/therapists'><Button id="therapist_matches" variant="contained" color="primary"></Link>
         Here
       </Button>
       <br/>
