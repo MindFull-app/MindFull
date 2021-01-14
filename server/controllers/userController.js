@@ -42,6 +42,7 @@ userController.userInfo = async (req, res, next) => {
       substance_abuse,
       mental_health,
     } = req.body;
+    console.log('req.body usercontroller user info', req.body);
     const updateUser = await User.findOneAndUpdate({
       _id,
     },
@@ -85,17 +86,21 @@ userController.matchTherapist = async (req, res, next) => {
       mental_health,
     } = req.body;
     const filtered = Object.keys(req.body).filter((key) => req.body[key] === true);
+    console.log('filtered matchterapist req.body', filtered);
     const obj = {
       "therapist": true,
       "gender": gender_preference,
     };
     filtered.forEach((e) => { obj[e] = true; });
+    console.log('filtered object', obj);
     const matchTherapist = User.aggregate([
       {
         $match: obj,
       },
     ]);
+    console.log('matchTherapist', matchTherapist);
     const matchResult = await matchTherapist.exec();
+    console.log('therapist match result usercontroller', matchResult);
     res.locals.matchTherapist = matchResult;
     return next();
   } catch (error) {

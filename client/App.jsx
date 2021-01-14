@@ -32,6 +32,8 @@ function App() {
       setImg(index)}, 5000)
   }
 
+  console.log(user);
+
   rotateBackground();
 
   return (
@@ -41,7 +43,7 @@ function App() {
         <Route path='/' component={Login} exact />
         <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} user={user}/>} />
         <Route path='/home' component={Home} />
-        <Route path='/form' component={UserInformation} />
+        <Route path='/form' render={(props) => <UserInformation {...props} setUser={setUser} user={user}/>} />
       </Switch>
     </main>
   );
