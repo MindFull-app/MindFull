@@ -72,10 +72,10 @@ function SignUp({user, setUser}) {
     <SimpleCard >
       <SimpleForm btn='SignUp' onFormSubmit={onFormSubmit}>
         {user ? <Redirect to="/form" /> : ''}
-        <TextField onChange={(e) => handleInputChange(e)} value={email} required id="signup_username" name="email" label="Email" />
-        <TextField onChange={(e) => handleInputChange(e)} value={password} required id="signup_password" name="password" label="Password" type="password"/>
         <TextField onChange={(e) => handleInputChange(e)} value={firstName} required id="first_name" name="firstName" label="First Name" />
         <TextField onChange={(e) => handleInputChange(e)} value={lastName} required id="last_name" name="lastName" label="Last Name" />
+        <TextField onChange={(e) => handleInputChange(e)} value={email} required id="signup_username" name="email" label="Email" />
+        <TextField onChange={(e) => handleInputChange(e)} value={password} required id="signup_password" name="password" label="Password" type="password"/>
 
         <FormControl className={classes.radioForm} component="fieldset">
           <FormLabel component="legend">Select User Type</FormLabel>

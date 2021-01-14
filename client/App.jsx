@@ -32,7 +32,7 @@ function App() {
       setImg(index)}, 5000)
   }
 
-  console.log(user);
+  // console.log(user);
 
   rotateBackground();
 
@@ -42,7 +42,7 @@ function App() {
       <Switch>
         <Route path='/' render={(props) => <Login {...props} setUser={setUser} user={user}/>} exact />
         <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} user={user}/>} />
-        <Route path='/home' component={Home} />
+        <Route path='/home' render={(props) => <Home {...props} setUser={setUser} user={user}/>} />
         <Route path='/form' render={(props) => <UserInformation {...props} setUser={setUser} user={user}/>} />
       </Switch>
     </main>

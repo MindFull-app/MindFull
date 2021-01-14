@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     margin: 0,
+    fontFamily:'Open Sans'
   },
   formgroup: {
     display: 'flex',
