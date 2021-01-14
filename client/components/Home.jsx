@@ -2,6 +2,8 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 
+import { Link, Redirect } from 'react-router-dom';
+
 import SimpleCard from './views/SimpleCard.jsx';
 
 function Home() {
@@ -10,9 +12,9 @@ function Home() {
       <h1>Welcome to MindFull, user_name</h1>
       <SimpleCard>
       <h4>Fill out your user form</h4>
-      <Button id="user_form" variant="contained" color="primary">
+      <Link to='/form'><Button id="user_form" variant="contained" color="primary">
         Here
-      </Button>
+      </Button></Link>
       <br/>
 
       <h4>View therapist matches</h4>
