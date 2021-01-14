@@ -38,9 +38,9 @@ function App() {
 
   return (
     <main className={classes.root}>
-      <Header user={user}/>
+      <Header user={user} setUser={setUser} />
       <Switch>
-        <Route path='/' component={Login} exact />
+        <Route path='/' render={(props) => <Login {...props} setUser={setUser} user={user}/>} exact />
         <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} user={user}/>} />
         <Route path='/home' component={Home} />
         <Route path='/form' render={(props) => <UserInformation {...props} setUser={setUser} user={user}/>} />
