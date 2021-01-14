@@ -1,6 +1,5 @@
 import React from "react"
-import ReactDOM from 'react-dom';
-import {Button, Menu, TextField, MenuItem} from '@material-ui/core';
+import {TextField, MenuItem} from '@material-ui/core';
 import {makeStyles, FormLabel, FormGroup, FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 
 import SimpleCard from './views/SimpleCard.jsx'
@@ -13,6 +12,14 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  title: {
+    margin: 0,
+  },
+  formgroup: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row'
+  }
 }));
 
 const therapyBeforeOpt = ['Yes', 'No'];
@@ -58,10 +65,9 @@ function UserInformation() {
   
   return (
     <SimpleCard >
-    <h2>User Information</h2>
+      <h2 className={classes.title}>User Information</h2>
       <SimpleForm btn='Enter'>
         <TextField required id="user_age" label="Age" />
-        <br/>
         <TextField required id="therapy_experience" select label="Have you ever been in therapy before?" value={therapyBefore} onChange={handleChange}>
           {therapyBeforeOpt.map((option) => (
             <MenuItem key={option} value={option}>
@@ -69,9 +75,7 @@ function UserInformation() {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="years_experience" label="Years of Therapy Experience" />
-        <br/>
         <TextField required id="gender_identity" select value={genderIdentity} onChange={handleChange} label="Gender Identity">
           {genderIdentities.map((option) => (
             <MenuItem key={option} value={option}>
@@ -79,7 +83,6 @@ function UserInformation() {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="sexual_orientation" select value={sexualOrentation} onChange={handleChange}label="Sexual Orientation">
           {sexualOrientations.map((option) => (
             <MenuItem key={option} value={option}>
@@ -87,7 +90,6 @@ function UserInformation() {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="relationship_status" select value={relationshipStatus} onChange={handleChange} label="Relationship Status">
           {relationshipStatuses.map((option) => (
             <MenuItem key={option} value={option}>
@@ -95,7 +97,6 @@ function UserInformation() {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="therapist_preference" select value={therapistPreference} onChange={handleChange} label="Therapist Gender Preference">
           {therapistPreferences.map((option) => (
             <MenuItem key={option} value={option}>
@@ -103,7 +104,6 @@ function UserInformation() {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="pronouns" select value={pronoun} onChange={handleChange} label="Pronouns">
           {pronouns.map((option) => (
             <MenuItem key={option} value={option}>
@@ -112,46 +112,49 @@ function UserInformation() {
           ))}
         </TextField>
         <br/>
-        <br/>
         <FormControl component="fieldset">
         <FormLabel component="legend">Please check off all fields you would like your therapist to have experience counseling for:</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox checked={impostor_syndrome} onChange={handleChange} name="impostor_syndrome" />
-              }
-              label="Impostor Syndrome"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={lgbtqia_issues} onChange={handleChange} name="lgbtqia_issues" />
-              }
-              label="LGBTQIA Issues"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={marriage_counseling} onChange={handleChange} name="marriage_counseling"/>
-              }
-              label="Marriage Counseling"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={childhood_trauma} onChange={handleChange} name="childhood_trauma"/>
-              }
-              label="Childhood Trauma"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={substance_abuse} onChange={handleChange} name="substance_abuse"/>
-              }
-              label="Substance Abuse"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={mental_health} onChange={handleChange} name="mental_health"/>
-              }
-              label="Mental Health"
-            />
+          <FormGroup className={classes.formgroup}>
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={impostor_syndrome} onChange={handleChange} name="impostor_syndrome" />
+                }
+                label="Impostor Syndrome"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={lgbtqia_issues} onChange={handleChange} name="lgbtqia_issues" />
+                }
+                label="LGBTQIA Issues"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={marriage_counseling} onChange={handleChange} name="marriage_counseling"/>
+                }
+                label="Marriage Counseling"
+              />
+            </div>
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={childhood_trauma} onChange={handleChange} name="childhood_trauma"/>
+                }
+                label="Childhood Trauma"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={substance_abuse} onChange={handleChange} name="substance_abuse"/>
+                }
+                label="Substance Abuse"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={mental_health} onChange={handleChange} name="mental_health"/>
+                }
+                label="Mental Health"
+              />
+            </div>     
           </FormGroup>
       </FormControl>
       </SimpleForm>
