@@ -24,10 +24,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+let submitted = false;
+
 const therapyBeforeOpt = ['Yes', 'No'];
 const genderIdentities = ['Male', 'Female', 'Transgender MTF', 'Transgender FTM', 'Non-binary', 'Gender Fluid', 'Other', 'I don\'t know'];
 const sexualOrientations = ['Heterosexual/Straight', 'Homosexual/Gay/Lesbian', 'Bisexual/Pansexual', 'Asexual', 'Demisexual', 'Other'];
-const relationshipStatuses = ['In a relationship', 'Domestic Partnership/Married', 'Divorced', 'Widowed', 'Other'];
+const relationshipStatuses = ['Single', 'In a relationship', 'Domestic Partnership/Married', 'Divorced', 'Widowed', 'Other'];
 const therapistPreferences = ['Male', 'Female', 'Other', 'Does not matter'];
 const pronouns = ['He/Him/His', 'She/Her/Hers', 'They/Them/Theirs', 'Other'];
 
@@ -69,8 +71,6 @@ function UserInformation({user, setUser}) {
     substance_abuse,
     mental_health } = counseling;
   
-  let submitted = false;
-
   const onFormSubmit = () => {
     let body = {
       _id: user._id,
@@ -110,7 +110,7 @@ function UserInformation({user, setUser}) {
     <SimpleCard >
       <h2 className={classes.title}>User Information</h2>
       <SimpleForm btn='Enter' onFormSubmit={onFormSubmit}>
-      {submitted ? <Redirect to="/home" /> : ''}
+      {submitted ? <Redirect to="/home" /> : submitted === false}
         <TextField onChange={(e) => handleChange(e)} value={userAge} required id="user_age" name="userAge" label="Age" />
         <TextField required id="therapy_experience" select label="Have you ever been in therapy before?" value={therapyBefore} onChange={handleChange} name="therapyExperience">
           {therapyBeforeOpt.map((option) => (
