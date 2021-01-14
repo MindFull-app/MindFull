@@ -113,7 +113,6 @@ function UserInformation({user, setUser}) {
       <SimpleForm btn='Enter' onFormSubmit={onFormSubmit}>
       {submitted ? <Redirect to="/home" /> : ''}
         <TextField onChange={(e) => handleChange(e)} value={userAge} required id="user_age" name="userAge" label="Age" />
-        <br/>
         <TextField required id="therapy_experience" select label="Have you ever been in therapy before?" value={therapyBefore} onChange={handleChange} name="therapyExperience">
           {therapyBeforeOpt.map((option) => (
             <MenuItem key={option} value={option}>
@@ -121,9 +120,7 @@ function UserInformation({user, setUser}) {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField onChange={(e) => handleChange(e)} value={therapyYears} required id="years_experience" name="therapyYears" label="Years of Therapy Experience" />
-        <br/>
         <TextField required id="gender_identity" select value={genderIdentity} onChange={handleChange} label="Gender Identity" name="genderIdentity">
           {genderIdentities.map((option) => (
             <MenuItem key={option} value={option}>
@@ -131,7 +128,6 @@ function UserInformation({user, setUser}) {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="sexual_orientation" select value={sexualOrentation} onChange={handleChange}label="Sexual Orientation" name="sexualOrientation">
           {sexualOrientations.map((option) => (
             <MenuItem key={option} value={option}>
@@ -139,7 +135,6 @@ function UserInformation({user, setUser}) {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="relationship_status" select value={relationshipStatus} onChange={handleChange} label="Relationship Status" name="relationshipStatus">
           {relationshipStatuses.map((option) => (
             <MenuItem key={option} value={option}>
@@ -147,7 +142,6 @@ function UserInformation({user, setUser}) {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="therapist_preference" select value={therapistPreference} onChange={handleChange} label="Therapist Gender Preference" name="therapistPreference">
           {therapistPreferences.map((option) => (
             <MenuItem key={option} value={option}>
@@ -155,7 +149,6 @@ function UserInformation({user, setUser}) {
             </MenuItem>
           ))}
         </TextField>
-        <br/>
         <TextField required id="pronouns" select value={pronoun} onChange={handleChange} label="Pronouns" name="pronouns">
           {pronouns.map((option) => (
             <MenuItem key={option} value={option}>
@@ -166,6 +159,7 @@ function UserInformation({user, setUser}) {
         <br/>
         <FormControl component="fieldset">
         <FormLabel component="legend">Please check off all fields you would like your therapist to have experience counseling for:</FormLabel>
+          <br/>
           <FormGroup className={classes.formgroup}>
             <div>
               <FormControlLabel
