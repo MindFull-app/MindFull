@@ -23,6 +23,23 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+userController.verifyUser = async (req, res, next) => {
+  try {
+    const {
+      email,
+      password,
+    } = req.body;
+    const user = await User.findOne({email, password});
+    res.locals.user = user;
+    return next();
+  } catch (error) {
+    return next({
+      log: `userController.verify: ERROR: ${error}`,
+      message: 'Error verifying user',
+    });
+  }
+}
+
 userController.userInfo = async (req, res, next) => {
   try {
     const {
@@ -89,7 +106,7 @@ userController.matchTherapist = async (req, res, next) => {
     console.log('filtered matchterapist req.body', filtered);
     const obj = {
       "therapist": true,
-      "gender": gender_preference,
+      "gender": gender_preference.toLowerCase(),
     };
     filtered.forEach((e) => { obj[e] = true; });
     console.log('filtered object', obj);

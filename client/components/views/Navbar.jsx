@@ -20,8 +20,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ButtonAppBar({children}) {
+export default function ButtonAppBar({children, user, setUser}) {
   const classes = useStyles();
+
+  function onClick () {
+    location='/'
+  }
 
   return (
     <div className={classes.root}>
@@ -31,7 +35,7 @@ export default function ButtonAppBar({children}) {
             <MenuIcon />
           </IconButton>
           {children}
-          <Button color="inherit">Login</Button>
+          {user ? <Button onClick={onClick} color="inherit">LogOut</Button> : <Button onClick={onClick} color="inherit">LogIn</Button>}
         </Toolbar>
       </AppBar>
     </div>
