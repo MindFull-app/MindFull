@@ -89,7 +89,7 @@ userController.matchTherapist = async (req, res, next) => {
     console.log('filtered matchterapist req.body', filtered);
     const obj = {
       "therapist": true,
-      "gender": gender_preference,
+      "gender": gender_preference.toLowerCase(),
     };
     filtered.forEach((e) => { obj[e] = true; });
     console.log('filtered object', obj);
