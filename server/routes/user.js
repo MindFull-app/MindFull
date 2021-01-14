@@ -14,7 +14,7 @@ router.post('/login', userController.verifyUser, (req, res) => {
   return res.status(200).json(res.locals.user);
 })
 
-router.put('/form', userController.userInfo, userController.matchTherapist, (req, res) => {
+router.put('/form', userController.userInfo, userController.matchTherapist, userController.updateTherapists, (req, res) => {
   return res.status(200).json(res.locals.matchTherapist);
 });
 

@@ -128,4 +128,24 @@ userController.matchTherapist = async (req, res, next) => {
   }
 };
 
+userController.updateTherapists = async (req, res, next) => {
+  try {
+    const {_id} = req.body;
+    await User.findOneAndUpdate({
+      _id,
+    },
+    {
+      $set: {
+        therapists: res.locals.matchTherapist
+      },
+    });
+    return next();
+  } catch (error) {
+    return next({
+      log: `userController.updateTherapists: ERROR: ${error}`,
+      message: 'Error updating matched therapists',
+    });
+  }
+}
+
 module.exports = userController;
