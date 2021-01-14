@@ -6,8 +6,10 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '30rem',
     margin: 'auto',
-    marginTop: '10rem',
-    padding: '2rem'
+    marginTop: '5rem',
+    padding: '2rem',
+    maxHeight: '30rem',
+    overflow: 'auto'
   },
   content: {
     display: 'flex',
