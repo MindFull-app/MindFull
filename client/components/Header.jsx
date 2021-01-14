@@ -14,11 +14,11 @@ const useStyles = makeStyles({
   }
 });
 
-function Header({user}) {
+function Header({user, setUser}) {
   const classes = useStyles();
   const name = user ? `, ${user.first_name} ${user.last_name}` : '';
   return (
-    <Navbar>
+    <Navbar user={user} setUser={setUser}>
       <h1 className={classes.root}>Welcome to MindFull {name}</h1>      
     </Navbar>
   );
