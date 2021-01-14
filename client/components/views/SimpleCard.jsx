@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '30rem',
     margin: 'auto',
-    marginTop: '10rem',
     padding: '2rem'
   },
   content: {
