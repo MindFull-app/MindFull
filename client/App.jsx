@@ -7,6 +7,7 @@ import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
 import UserInformation from './components/UserInformation.jsx';
 import Home from './components/Home.jsx';
+import TherapistDisplay from './components/TherapistDisplay.jsx';
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -44,6 +45,7 @@ function App() {
         <Route path='/signup' render={(props) => <SignUp {...props} setUser={setUser} user={user}/>} />
         <Route path='/home' component={Home} />
         <Route path='/form' render={(props) => <UserInformation {...props} setUser={setUser} user={user}/>} />
+        <Route path='/therapists' render={(props) => <TherapistDisplay {...props} setUser={setUser} user={user}/>} />
       </Switch>
     </main>
   );

@@ -100,8 +100,7 @@ function UserInformation({user, setUser}) {
     })
     .then(res => res.json())
     .then(data => {
-      setUser({...user, ...data})
-      console.log('data coming in', data);
+      setUser({...user, ...{therapists: data}})
       submitted = true;
     })
     .catch(err => console.log(err))

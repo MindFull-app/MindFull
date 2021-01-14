@@ -39,6 +39,7 @@ const userSchema = new Schema({
   substance_abuse: Boolean,
   mental_health: Boolean,
   online: Boolean,
+  therapists: Array,
 });
 
 // creates a model for the 'species' collection that will be part of the export
