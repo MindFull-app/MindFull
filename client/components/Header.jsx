@@ -1,16 +1,26 @@
 import React from "react"
-import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core';
+import Navbar from './views/Navbar.jsx';
 
-function Header() {
+const useStyles = makeStyles({
+  root: {
+    fontSize: '3rem',
+    margin: '0',
+    padding: '1rem',
+    color: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: 'Open Sans'
+  }
+});
+
+function Header({user}) {
+  const classes = useStyles();
+  const name = user ? `, ${user.first_name} ${user.last_name}` : '';
   return (
-    <div>
-      <h1>Welcome to MindFull
-      <Button variant="contained" color="primary">
-        Learn More
-      </Button>
-      </h1>      
-    </div>
+    <Navbar>
+      <h1 className={classes.root}>Welcome to MindFull {name}</h1>      
+    </Navbar>
   );
 }
 
