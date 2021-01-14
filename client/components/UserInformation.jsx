@@ -14,6 +14,14 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  title: {
+    margin: 0,
+  },
+  formgroup: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row'
+  }
 }));
 
 const therapyBeforeOpt = ['Yes', 'No'];
@@ -101,7 +109,7 @@ function UserInformation({user, setUser}) {
 
   return (
     <SimpleCard >
-    <h2>User Information</h2>
+      <h2 className={classes.title}>User Information</h2>
       <SimpleForm btn='Enter' onFormSubmit={onFormSubmit}>
       {submitted ? <Redirect to="/home" /> : ''}
         <TextField onChange={(e) => handleChange(e)} value={userAge} required id="user_age" name="userAge" label="Age" />
@@ -156,46 +164,49 @@ function UserInformation({user, setUser}) {
           ))}
         </TextField>
         <br/>
-        <br/>
         <FormControl component="fieldset">
         <FormLabel component="legend">Please check off all fields you would like your therapist to have experience counseling for:</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox checked={impostor_syndrome} onChange={handleChange} name="impostor_syndrome" />
-              }
-              label="Impostor Syndrome"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={lgbtqia_issues} onChange={handleChange} name="lgbtqia_issues" />
-              }
-              label="LGBTQIA Issues"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={marriage_counseling} onChange={handleChange} name="marriage_counseling"/>
-              }
-              label="Marriage Counseling"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={childhood_trauma} onChange={handleChange} name="childhood_trauma"/>
-              }
-              label="Childhood Trauma"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={substance_abuse} onChange={handleChange} name="substance_abuse"/>
-              }
-              label="Substance Abuse"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox checked={mental_health} onChange={handleChange} name="mental_health"/>
-              }
-              label="Mental Health"
-            />
+          <FormGroup className={classes.formgroup}>
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={impostor_syndrome} onChange={handleChange} name="impostor_syndrome" />
+                }
+                label="Impostor Syndrome"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={lgbtqia_issues} onChange={handleChange} name="lgbtqia_issues" />
+                }
+                label="LGBTQIA Issues"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={marriage_counseling} onChange={handleChange} name="marriage_counseling"/>
+                }
+                label="Marriage Counseling"
+              />
+            </div>
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox checked={childhood_trauma} onChange={handleChange} name="childhood_trauma"/>
+                }
+                label="Childhood Trauma"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={substance_abuse} onChange={handleChange} name="substance_abuse"/>
+                }
+                label="Substance Abuse"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox checked={mental_health} onChange={handleChange} name="mental_health"/>
+                }
+                label="Mental Health"
+              />
+            </div>     
           </FormGroup>
       </FormControl>
       </SimpleForm>

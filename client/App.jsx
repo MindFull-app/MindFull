@@ -14,7 +14,11 @@ const useStyles = makeStyles({
     backgroundImage: `url('./build/img/${img}.jpg')`,
     backgroundSize: 'cover',
     transitionDuration: '1s',
-    height: '100%'
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyItems: 'center'
   })
 });
 

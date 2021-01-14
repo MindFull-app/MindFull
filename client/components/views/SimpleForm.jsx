@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     flexDirection: 'column',
     display: 'flex',
-    width: '20rem'
+    width: '30rem'
   },
   btn: {
     width: '20rem'
