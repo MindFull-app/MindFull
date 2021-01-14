@@ -10,6 +10,10 @@ router.post('/signup', userController.createUser, (req, res) => {
   return res.status(200).json(res.locals.user);
 });
 
+router.post('/login', userController.verifyUser, (req, res) => {
+  return res.status(200).json(res.locals.user);
+})
+
 router.put('/form', userController.userInfo, userController.matchTherapist, (req, res) => {
   return res.status(200).json(res.locals.matchTherapist);
 });
