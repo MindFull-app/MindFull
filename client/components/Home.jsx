@@ -1,9 +1,8 @@
 import React from "react"
-import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import SimpleCard from './views/SimpleCard.jsx';
 
@@ -35,9 +34,9 @@ function Home({user, setUser}) {
       <br/>
 
       <h3 className={classes.text}>View therapist matches</h3>
-      <Button id="therapist_matches" variant="contained" color="primary">
+      <Link to='/therapists'><Button id="therapist_matches" variant="contained" color="primary">
         Here
-      </Button>
+      </Button></Link>
       <br/>
 
       <h3 className={classes.text}>View therapist communications</h3>
