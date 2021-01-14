@@ -1,13 +1,30 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import {Button, TextField, MenuItem} from '@material-ui/core';
-import {FormLabel, FormGroup, FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
+import {Button, Menu, TextField, MenuItem} from '@material-ui/core';
+import {makeStyles, FormLabel, FormGroup, FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 
 import SimpleCard from './views/SimpleCard.jsx'
 import SimpleForm from './views/SimpleForm.jsx'
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
+const therapyBeforeOpt = ['Yes', 'No'];
+const genderIdentities = ['Male', 'Female', 'Transgender MTF', 'Transgender FTM', 'Non-binary', 'Gender Fluid', 'Other', 'I don\'t know'];
+const sexualOrientations = ['Heterosexual/Straight', 'Homosexual/Gay/Lesbian', 'Bisexual/Pansexual', 'Asexual', 'Demisexual', 'Other'];
+const relationshipStatuses = ['In a relationship', 'Domestic Partnership/Married', 'Divorced', 'Widowed', 'Other'];
+const therapistPreferences = ['Male', 'Female', 'Other', 'Does not matter'];
+const pronouns = ['He/Him/His', 'She/Her/Hers', 'They/Them/Theirs', 'Other'];
+
 function UserInformation() {
-  const [state, setState] = React.useState({
+  const classes = useStyles();
+  const [counseling, setCounseling] = React.useState({
     impostor_syndrome: false,
     lgbtqia_issues: false,
     marriage_counseling: false,
@@ -15,9 +32,21 @@ function UserInformation() {
     substance_abuse: false,
     mental_health: false
   });
+  const [therapyBefore, setTherapyBefore] = React.useState();
+  const [genderIdentity, setGenderIdentity] = React.useState();
+  const [sexualOrentation, setSexualOrientation] = React.useState();
+  const [relationshipStatus, setRelationshipStatus] = React.useState();
+  const [therapistPreference, setTherapistPreference] = React.useState();
+  const [pronoun, setPronoun] = React.useState();
 
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+    setCounseling({ ...counseling, [event.target.name]: event.target.checked });
+    setTherapyBefore(event.target.value);
+    setGenderIdentity(event.target.value);
+    setSexualOrientation(event.target.value);
+    setRelationshipStatus(event.target.value);
+    setTherapistPreference(event.target.value);
+    setPronoun(event.target.value);
   };
 
   const { impostor_syndrome,
@@ -25,51 +54,66 @@ function UserInformation() {
     marriage_counseling,
     childhood_trauma,
     substance_abuse,
-    mental_health } = state;
-
+    mental_health } = counseling;
+  
   return (
     <SimpleCard >
+    <h2>User Information</h2>
       <SimpleForm btn='Enter'>
         <TextField required id="user_age" label="Age" />
         <br/>
+        <TextField required id="therapy_experience" select label="Have you ever been in therapy before?" value={therapyBefore} onChange={handleChange}>
+          {therapyBeforeOpt.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+        <br/>
         <TextField required id="years_experience" label="Years of Therapy Experience" />
         <br/>
-        <TextField required id="gender_identity" label="Gender Identity">
-          <MenuItem>Male</MenuItem>
-          <MenuItem>Female</MenuItem>
-          <MenuItem>Non-binary</MenuItem>
-          <MenuItem>Transgender MTF</MenuItem>
-          <MenuItem>Transgender FTM</MenuItem>
-          <MenuItem>Other</MenuItem>
+        <TextField required id="gender_identity" select value={genderIdentity} onChange={handleChange} label="Gender Identity">
+          {genderIdentities.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
         <br/>
-        <TextField required id="sexual_orientation" label="Sexual Orientation">
-          <MenuItem>Heterosexual/Straight</MenuItem>
-          <MenuItem>Homosexual/Gay/Lesbian</MenuItem>
-          <MenuItem>Bisexual/Pansexual</MenuItem>
-          <MenuItem>Asexual</MenuItem>
-          <MenuItem>Demisexual</MenuItem>
-          <MenuItem>Other</MenuItem>
+        <TextField required id="sexual_orientation" select value={sexualOrentation} onChange={handleChange}label="Sexual Orientation">
+          {sexualOrientations.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
         <br/>
-        <TextField required id="relationship_status" label="Relationship Status">
-          <MenuItem>Single</MenuItem>
-          <MenuItem>In a relationship</MenuItem>
-          <MenuItem>Domestic Partnership/Married</MenuItem>
-          <MenuItem>Divorced</MenuItem>
-          <MenuItem>Widowed</MenuItem>
-          <MenuItem>Other</MenuItem>
+        <TextField required id="relationship_status" select value={relationshipStatus} onChange={handleChange} label="Relationship Status">
+          {relationshipStatuses.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
         <br/>
-        <TextField required id="therapist_preference" label="Therapist Gender Preference">
-          <MenuItem>Male</MenuItem>
-          <MenuItem>Female</MenuItem>
-          <MenuItem>Does not matter</MenuItem>
+        <TextField required id="therapist_preference" select value={therapistPreference} onChange={handleChange} label="Therapist Gender Preference">
+          {therapistPreferences.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
         <br/>
-        <TextField required id="pronouns" label="Pronouns" />
-      </SimpleForm>
-      <FormControl component="fieldset">
+        <TextField required id="pronouns" select value={pronoun} onChange={handleChange} label="Pronouns">
+          {pronouns.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+        <br/>
+        <br/>
+        <FormControl component="fieldset">
         <FormLabel component="legend">Please check off all fields you would like your therapist to have experience counseling for:</FormLabel>
           <FormGroup>
             <FormControlLabel
@@ -110,6 +154,7 @@ function UserInformation() {
             />
           </FormGroup>
       </FormControl>
+      </SimpleForm>
     </SimpleCard >
   );
 }
